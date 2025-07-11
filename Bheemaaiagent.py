@@ -41,12 +41,12 @@ def main():
         unsafe_allow_html=True,
     )
 
-    st.title("AI Chatbot")
+    st.title("HELLO I'M BHEEMA AI Chatbot")
 
     query = st.text_input("You: ")
     if query:
         response = get_response(query)
-        st.write("AI: ", response)
+        st.write("BHEEMA AI: ", response)
 
         # Auto-advance to next input text
         st.session_state.query = ""
