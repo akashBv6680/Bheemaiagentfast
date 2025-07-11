@@ -43,19 +43,10 @@ def main():
 
     st.title("HELLO I'M BHEEMA AI Chatbot")
 
-    if 'query' not in st.session_state:
-        st.session_state.query = ""
-
-    query = st.text_input("You: ", value=st.session_state.query)
-    st.session_state.query = query
-
+    query = st.text_input("You: ")
     if query:
         response = get_response(query)
         st.write("BHEEMA AI: ", response)
-        next_query = st.text_input("You (next question): ")
-        if next_query:
-            next_response = get_response(next_query)
-            st.write("BHEEMA AI: ", next_response)
 
 if __name__ == "__main__":
     main()
