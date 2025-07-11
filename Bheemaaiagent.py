@@ -32,7 +32,7 @@ def main():
         """
         <style>
         body {
-            background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("https://picsum.photos/2000/1000");
+            background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("https://wallpapercave.com/wp/wp1873327.jpg");
             background-size: cover;
             background-attachment: fixed;
         }
@@ -43,10 +43,21 @@ def main():
 
     st.title("HELLO I'M BHEEMA AI Chatbot")
 
-    query = st.text_input("You: ")
-    if query:
+    with st.form("query_form"):
+        query = st.text_input("You: ")
+        submitted = st.form_submit_button("Submit")
+
+    if submitted:
         response = get_response(query)
         st.write("BHEEMA AI: ", response)
+
+        with st.form("next_query_form"):
+            next_query = st.text_input("You (next question): ")
+            next_submitted = st.form_submit_button("Submit Next", key="next_submit")
+
+        if next_submitted:
+            next_response = get_response(next_query)
+            st.write("BHEEMA AI: ", next_response)
 
 if __name__ == "__main__":
     main()
