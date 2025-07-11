@@ -1,7 +1,6 @@
 import streamlit as st
 import os
 import requests
-from PIL import Image
 
 # Set API key
 api_key = "tgp_v1_BvPlhwF-WQfAOBUmnV8OLm37Sdzbqmp9Uu8faPNSeIA"
@@ -33,12 +32,12 @@ def main():
         """
         <style>
         body {
-            background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("data:image/png;base64,%s");
+            background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("https://picsum.photos/2000/1000");
             background-size: cover;
             background-attachment: fixed;
         }
         </style>
-        """ % get_image_base64("c3a9cf173291955.648da452abee5.png"),
+        """,
         unsafe_allow_html=True,
     )
 
@@ -57,12 +56,6 @@ def main():
         if next_submitted:
             next_response = get_response(next_query)
             st.write("BHEEMA AI: ", next_response)
-
-def get_image_base64(image_path):
-    import base64
-    with open(image_path, "rb") as image_file:
-        image_data = base64.b64encode(image_file.read()).decode("utf-8")
-    return image_data
 
 if __name__ == "__main__":
     main()
