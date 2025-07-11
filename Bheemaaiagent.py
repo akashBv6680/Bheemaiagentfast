@@ -48,9 +48,5 @@ def main():
         response = get_response(query)
         st.write("BHEEMA AI: ", response)
 
-        # Auto-advance to next input text
-        st.session_state.query = ""
-        st.experimental_rerun()
-
 if __name__ == "__main__":
     main()
