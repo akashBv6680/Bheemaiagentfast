@@ -43,19 +43,18 @@ def main():
 
     st.title("HELLO I'M BHEEMA AI Chatbot")
 
-    query = st.text_input("You: ")
-    submitted = st.button("Submit")
-
-    if submitted:
-        response = get_response(query)
-        st.write("BHEEMA AI: ", response)
-
-        next_query = st.text_input("You (next question): ")
-        next_submitted = st.button("Submit Next")
-
-        if next_submitted:
-            next_response = get_response(next_query)
-            st.write("BHEEMA AI: ", next_response)
+    container = st.container()
+    with container:
+        query = st.text_input("You: ", key="query")
+        if query:
+            response = get_response(query)
+            st.write("BHEEMA AI: ", response)
+            st.session_state.query = ""
+            with st.empty():
+                next_query = st.text_input("You (next question): ", key="next_query")
+                if next_query:
+                    next_response = get_response(next_query)
+                    st.write("B", next_response)
 
 if __name__ == "__main__":
     main()
